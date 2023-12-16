@@ -1,12 +1,12 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyAAUwKpK6j5fy3gTzMwamS5QHTJ7xSic0c",
-  authDomain: "smart-test-ee901.firebaseapp.com",
-  databaseURL: "https://smart-test-ee901-default-rtdb.firebaseio.com",
-  projectId: "smart-test-ee901",
-  storageBucket: "smart-test-ee901.appspot.com",
-  messagingSenderId: "608199887325",
-  appId: "1:608199887325:web:1830f4c5d50e2ce9c6ce34"
+  apiKey: "AIzaSyAKTof0tllNs6Jqniou9zaq8baJrJXBCoM",
+  authDomain: "ashraf-27e6b.firebaseapp.com",
+  projectId: "ashraf-27e6b",
+  storageBucket: "ashraf-27e6b.appspot.com",
+  messagingSenderId: "14595756122",
+  appId: "1:14595756122:web:99e3ba2344567f9ff84863"
 };
+
 firebase.initializeApp(firebaseConfig);
 // Get a reference to  RealTime Database service
 const database = firebase.database();
