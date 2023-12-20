@@ -91,6 +91,7 @@ async function addNewRoomInFirebase() {
         image: imageRoomValue,
         devices: [],
         devicesPush: [],
+        devicesPushDoor: [],
         id:JSON.stringify(index)
       }),
     });
@@ -322,7 +323,7 @@ saveData.addEventListener("click",()=>{
 })
 
 closeSetting.addEventListener("click",()=>{
-  updateSetting.style.top="-80%"
+  updateSetting.style.top="-75%"
 })
 
 
