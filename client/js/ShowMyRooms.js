@@ -31,6 +31,8 @@ if (urlParams.has("nameRoom") && urlParams.has("nameImage")) {
 
 let devices = document.querySelector(".devices");
 let devicesPush = document.querySelector(".devicesPush");
+let devicesPushDoor = document.querySelector(".devicesPushDoor");
+let choosePush = document.querySelector(".choose-Push");
 let containPushButtons = document.getElementById("containPushButtons");
 let NameOfDevice = document.querySelector(".NameOfDevice");
 let contentDevices = document.querySelector(".contentDevices");
@@ -65,6 +67,8 @@ closecontentdevices.addEventListener("click", () => {
 
 let DifferentDevice = document.getElementById("DifferentDevice");
 let addDefferentDevice = document.querySelector(".addDefferentDevice");
+let checkPushDoor = document.querySelector("#checkPushDoor")
+let checkPush = document.querySelector("#checkPush")
 
 addDefferentDevice.addEventListener("click", () => {
   // close form after adding new device
@@ -111,8 +115,9 @@ addDefferentDevice.addEventListener("click", () => {
           console.error("حدث خطأ أثناء إضافة الجهاز الجديد:", error);
         });
     } else {
-    
-      roomsRef
+  
+      if(checkPush.checked){
+        roomsRef
         .orderByChild("Name")
         .equalTo(currentName)
         .once("value")
@@ -129,13 +134,7 @@ addDefferentDevice.addEventListener("click", () => {
               (device) => device.Name === newDevice.Name
             );
             if (deviceExists) {
-              // this message will speech after adding New Device in Room
-              // let welcomeMessage = new SpeechSynthesisUtterance(
-              //   "This device already exists"
-              // );
-              // let speech = window.speechSynthesis;
-              // welcomeMessage.rate = 0.7;
-              // speech.speak(welcomeMessage);
+        
               alert("This device already exists");
             } else {
               devicesArray.push(newDevice);
@@ -144,21 +143,59 @@ addDefferentDevice.addEventListener("click", () => {
                 .then(() => {
                   console.log("تم إضافة الجهاز بنجاح!");
                   DifferentDevice.value=""
-        
-                  // this message will speech after adding New Device in Room
-                  // let welcomeMessage = new SpeechSynthesisUtterance(
-                  //   "A new device has been added to the room"
-                  // );
-                  // let speech = window.speechSynthesis;
-                  // welcomeMessage.rate = 0.7;
-                  // speech.speak(welcomeMessage);
+      
                 });
             }
+
           });
         })
         .catch((error) => {
           console.error("حدث خطأ أثناء إضافة الجهاز الجديد:", error);
         });
+      }
+      if(checkPushDoor.checked){
+        roomsRef
+        .orderByChild("Name")
+        .equalTo(currentName)
+        .once("value")
+        .then((snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            const devicesArray = childSnapshot.val().devicesPushDoor || [];
+            const newDevice = {
+              Name: "Push" + DifferentDevice.value,
+              status: 0,
+  
+          
+            };
+            const deviceExists = devicesArray.some(
+              (device) => device.Name === newDevice.Name
+            );
+            if (deviceExists) {
+        
+              alert("This device already exists");
+            } else {
+              devicesArray.push(newDevice);
+              childSnapshot.ref
+                .update({ devicesPushDoor: devicesArray })
+                .then(() => {
+                  console.log("تم إضافة الجهاز بنجاح!");
+                  DifferentDevice.value=""
+      
+                });
+            }
+
+          });
+        })
+        .catch((error) => {
+          console.error("حدث خطأ أثناء إضافة الجهاز الجديد:", error);
+        });
+
+
+      }
+
+
+
+
     }
   } else {
     alert("Enter Name of Device");
@@ -171,8 +208,15 @@ addDefferentDevice.addEventListener("click", () => {
 containPushButtons.addEventListener("change",()=>{
   if(containPushButtons.checked){
     parentselectImage.style.opacity="0"
+    choosePush.style.display="block"
+
+
   }else{
     parentselectImage.style.opacity="1"
+    choosePush.style.display="none"
+  
+
+
   }
 })
 
@@ -252,7 +296,7 @@ function DisplayDevices() {
 
 
 }
-function DisplayPushDevices() {
+function DisplayPushDevicesDoor() {
   const roomsRef = firebase.database().ref("Rooms");
   roomsRef
     .orderByChild("Name")
@@ -260,9 +304,9 @@ function DisplayPushDevices() {
     .on(
       "value",
       (snapshot) => {
-        devicesPush.innerHTML = "";
+        devicesPushDoor.innerHTML = "";
         snapshot.forEach((childSnapshot) => {
-          const devicesArray = childSnapshot.val().devicesPush || [];
+          const devicesArray = childSnapshot.val().devicesPushDoor || [];
           let html = "";
           devicesArray.forEach((device, i) => {
               let buttonStylePush = device.status == 1 || device.status == 2
@@ -296,7 +340,7 @@ function DisplayPushDevices() {
               html += card;
           });
       
-          devicesPush.innerHTML = html;
+          devicesPushDoor.innerHTML = html;
       });
       
       
@@ -304,7 +348,7 @@ function DisplayPushDevices() {
       
 
         // Attach click event listeners to the toggle buttons
-        let PushButtonON = devicesPush.querySelectorAll(".pushON");
+        let PushButtonON = devicesPushDoor.querySelectorAll(".pushON");
 
         PushButtonON.forEach((button) => {
           button.addEventListener("mousedown", () => {
@@ -314,14 +358,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
             
 
                updateStateDevice(
@@ -344,14 +388,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -373,14 +417,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -402,14 +446,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -426,7 +470,7 @@ function DisplayPushDevices() {
 
 
 
-        let PushButtonOFF = devicesPush.querySelectorAll(".pushOFF");
+        let PushButtonOFF = devicesPushDoor.querySelectorAll(".pushOFF");
 
         PushButtonOFF.forEach((button) => {
           button.addEventListener("mousedown", () => {
@@ -436,14 +480,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -464,14 +508,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -492,14 +536,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -520,14 +564,14 @@ function DisplayPushDevices() {
             const deviceIndex = button.dataset.deviceIndex;
 
             const devicesArray =
-              snapshot.child(roomKey).val().devicesPush || [];
+              snapshot.child(roomKey).val().devicesPushDoor || [];
 
             if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
               const deviceName = devicesArray[deviceIndex].Name;
               const imageName = devicesArray[deviceIndex].nameImage;
               const newImage = imageName;
               const newName = deviceName;
-              const nameOfArray = "devicesPush";
+              const nameOfArray = "devicesPushDoor";
 
               updateStateDevice(
                 roomKey,
@@ -554,7 +598,167 @@ function DisplayPushDevices() {
     );
 }
 
+function DisplayPushDevices() {
+  const roomsRef = firebase.database().ref("Rooms");
+  roomsRef
+    .orderByChild("Name")
+    .equalTo(currentName)
+    .on(
+      "value",
+      (snapshot) => {
+        devicesPush.innerHTML = "";
+        snapshot.forEach((childSnapshot) => {
+          devicesPush.innerHTML = "";
+          const devicesArray = childSnapshot.val().devicesPush || [];
+          devicesArray.forEach((device, i) => {
+            let buttonStylePush =
+              device.status == "1" ? "btn-success" : "btn-danger";
 
+            let card = `<div class="card border-0 p-2">
+            <span style="opacity:0">${i}</span>
+            <img src="../images/${device.nameImage}.jpg" alt="">
+            <p class="nameOfDevice">${device.Name}</p>
+            <i class="fa-solid fa-trash-can deletbtnDevice pushbtn"></i>
+            <div class="container">
+              <button class="push btn ${buttonStylePush}" data-room-key="${childSnapshot.key}" data-device-index="${i}">Push</button>
+            </div>
+
+            <span style="opacity:0">${childSnapshot.key}</span>
+          </div>`;
+            devicesPush.innerHTML += card;
+          });
+        });
+
+        // Attach click event listeners to the toggle buttons
+        let PushButtons = devicesPush.querySelectorAll(".push");
+        PushButtons.forEach((button) => {
+          button.addEventListener("mousedown", () => {
+            const roomKey = button.dataset.roomKey;
+            const deviceIndex = button.dataset.deviceIndex;
+
+            // Get the devices array for the current room
+            const devicesArray =
+              snapshot.child(roomKey).val().devicesPush || [];
+
+            // Check if the deviceIndex is within the valid range
+            if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
+              // Get the name of the device
+              const deviceName = devicesArray[deviceIndex].Name;
+              const imageName = devicesArray[deviceIndex].nameImage;
+              const newImage = imageName;
+
+              const newName = deviceName; // اضف هنا اسمًا جديدًا إذا كنت ترغب في تغيير اسم الجهاز
+              const nameOfArray = "devicesPush"; // اضف هنا اسم الصفيف الذي يحتوي على الأجهزة في قاعدة البيانات
+
+              updateStateDevice(
+                roomKey,
+                deviceIndex,
+                "1",
+                newName,
+                nameOfArray,
+
+                newImage
+              );
+            }
+          });
+
+          button.addEventListener("touchstart", () => {
+            const roomKey = button.dataset.roomKey;
+            const deviceIndex = button.dataset.deviceIndex;
+
+            // Get the devices array for the current room
+            const devicesArray =
+              snapshot.child(roomKey).val().devicesPush || [];
+
+            // Check if the deviceIndex is within the valid range
+            if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
+              // Get the name of the device
+              const deviceName = devicesArray[deviceIndex].Name;
+              const imageName = devicesArray[deviceIndex].nameImage;
+              const newImage = imageName;
+              const newName = deviceName; // اضف هنا اسمًا جديدًا إذا كنت ترغب في تغيير اسم الجهاز
+              const nameOfArray = "devicesPush"; // اضف هنا اسم الصفيف الذي يحتوي على الأجهزة في قاعدة البيانات
+
+              updateStateDevice(
+                roomKey,
+                deviceIndex,
+                "1",
+                newName,
+                nameOfArray,
+
+                newImage
+              );
+            }
+          });
+        });
+
+        PushButtons.forEach((button) => {
+          button.addEventListener("mouseup", () => {
+            const roomKey = button.dataset.roomKey;
+            const deviceIndex = button.dataset.deviceIndex;
+
+            // Get the devices array for the current room
+            const devicesArray =
+              snapshot.child(roomKey).val().devicesPush || [];
+
+            // Check if the deviceIndex is within the valid range
+            if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
+              // Get the name of the device
+              const deviceName = devicesArray[deviceIndex].Name;
+              const imageName = devicesArray[deviceIndex].nameImage;
+              const newImage = imageName;
+              const newName = deviceName; // اضف هنا اسمًا جديدًا إذا كنت ترغب في تغيير اسم الجهاز
+              const nameOfArray = "devicesPush"; // اضف هنا اسم الصفيف الذي يحتوي على الأجهزة في قاعدة البيانات
+
+              updateStateDevice(
+                roomKey,
+                deviceIndex,
+                "0",
+                newName,
+                nameOfArray,
+
+                newImage
+              );
+            }
+          });
+
+          button.addEventListener("touchend", () => {
+            const roomKey = button.dataset.roomKey;
+            const deviceIndex = button.dataset.deviceIndex;
+
+            // Get the devices array for the current room
+            const devicesArray =
+              snapshot.child(roomKey).val().devicesPush || [];
+
+            // Check if the deviceIndex is within the valid range
+            if (deviceIndex >= 0 && deviceIndex < devicesArray.length) {
+              // Get the name of the device
+              const deviceName = devicesArray[deviceIndex].Name;
+              const imageName = devicesArray[deviceIndex].nameImage;
+              const newImage = imageName;
+              const newName = deviceName; // اضف هنا اسمًا جديدًا إذا كنت ترغب في تغيير اسم الجهاز
+              const nameOfArray = "devicesPush"; // اضف هنا اسم الصفيف الذي يحتوي على الأجهزة في قاعدة البيانات
+
+              updateStateDevice(
+                roomKey,
+                deviceIndex,
+                "0",
+                newName,
+                nameOfArray,
+
+                newImage
+              );
+            }
+          });
+        });
+
+        // استبدل حدث mouseup بـ touchend
+      },
+      (error) => {
+        console.error("حدث خطأ أثناء قراءة الأجهزة:", error);
+      }
+    );
+}
 
 function updateStateDevice(
   uid,
@@ -592,6 +796,7 @@ function updateStateDevice(
 window.onload = () => {
   DisplayDevices();
   DisplayPushDevices();
+  DisplayPushDevicesDoor()
 };
 
 let currentStatus = 1;
