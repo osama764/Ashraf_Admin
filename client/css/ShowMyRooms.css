@@ -58,18 +58,18 @@ h1 {
 }
 
 
-.devices .card ,.devicesPush .card{
+.devices .card ,.devicesPush .card,.devicesPushDoor .card{
   width: 15%;
 
 }
 
-.devices .card ,.devicesPush .card{
+.devices .card ,.devicesPush .card,.devicesPushDoor .card{
   width: 15%;
   position: relative;
 
 }
 
-.devices .card p ,.devicesPush .card p{
+.devices .card p ,.devicesPush .card p,.devicesPushDoor .card p{
 position: absolute;
 top: 5px;
 right:  15px;
@@ -131,6 +131,10 @@ border: none;
   bottom:  7px;
 
 
+}
+
+.choose-Push{
+  display: none;
 }
 .overlay{
   /* transition: 2s; */
@@ -416,14 +420,14 @@ font-size: 22px;
   
   }
 
-  .devices .card ,.devicesPush .card{
+  .devices .card ,.devicesPush .card,.devicesPushDoor .card{
     width: 46%;
     position: relative;
 
     height: 11em;
     overflow: hidden;
   }
-  .devices .card p,.devicesPush .card p{
+  .devices .card p,.devicesPush .card p,.devicesPushDoor .card p{
     font-size: 11px !important;
     position: absolute;
 top: 8px;
