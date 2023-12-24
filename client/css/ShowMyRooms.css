@@ -834,15 +834,16 @@ position: absolute;
   .cardImage img {
 
     height: 70px;
+
   }
   .fa-power-off.pushOFF{
-    right: 65%;
+    right: 60%;
 
   }
   .fa-power-off.pushON{
   
 
-    left: 65%;
+    left: 60%;
 
 
   }
@@ -863,39 +864,49 @@ position: absolute;
   
   .devicesPushRemote .card img {
   
-    width: 160px;
-  height: 100px !important;
-    margin-top: 20px;
-    margin-left: 30px;
+    width: 130px;
+  height: 120px !important;
+    margin-top: 35px;
+    margin-left: 20px;
   }
   
   .devicesPushRemote .card .fa-caret-up {
 
-    left: 39%;
-
+    left: 37%;
+top: 42%;
   
   }
   
   .devicesPushRemote .card .fa-caret-down {
 
-    bottom: 32%;
-    left: 39%;
+    bottom: 28%;
+    left: 37%;
 
   
   }
   
   .devicesPushRemote .card .fa-caret-left {
 
-    top: 45%;
-left: 25%;
+    top: 50%;
+left: 22%;
 
   
   }
   
   .devicesPushRemote .card .fa-caret-right {
 
-    top: 45%;
-    right: 35.5%;
+    top: 50%;
+    right: 32%;
+
+  
+  }
+  .devicesPushRemote .card .fa-circle-play{
+    
+    top: 53%;
+    right: 47%;
+    font-size: 25px;
+
+  
 
   
   }
@@ -906,5 +917,46 @@ left: 25%;
 
   
   }
+
+  
+.devicesPushRemote .card .fa-volume-low{
+
+
+  font-size: 22px;
+
+
+  padding: 10px;
+
+
+}
+
+.devicesPushRemote .card .fa-volume-high{
+
+  font-size: 25px;
+
+  padding: 8px 6px;
+
+
+}
+
+.devicesPushRemote .card .fa-rotate-left{
+
+  top: 72%;
+  font-size: 23px;
+  padding: 5px 7px;
+  
+
+}
+
+.devicesPushRemote .card .fa-right-left{
+
+  top: 72%;
+
+  font-size: 23px;
+
+  padding: 5px 7px;
+
+
+}
 
 }
