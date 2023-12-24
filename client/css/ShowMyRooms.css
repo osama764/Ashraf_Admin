@@ -50,6 +50,7 @@ h1 {
   transform: translateY(50px);
   margin: 0 auto 60px;
 }
+
 .addDevice {
   position: absolute;
   left: 92%;
@@ -58,27 +59,35 @@ h1 {
 }
 
 
-.devices .card ,.devicesPush .card,.devicesPushDoor .card{
+.devices .card,
+.devicesPush .card,
+.devicesPushDoor .card {
   width: 15%;
 
 }
 
-.devices .card ,.devicesPush .card,.devicesPushDoor .card{
+.devices .card,
+.devicesPush .card,
+.devicesPushDoor .card,
+.devicesPushRemote .card {
   width: 15%;
   position: relative;
 
 }
 
-.devices .card p ,.devicesPush .card p,.devicesPushDoor .card p{
-position: absolute;
-top: 5px;
-right:  15px;
+.devices .card p,
+.devicesPush .card p,
+.devicesPushDoor .card p.devicesPushRemote .card p {
+  position: absolute;
+  top: 5px;
+  right: 15px;
   font-size: 14px !important;
 }
+
 .card {
   position: relative;
   width: 55%;
-  height: 9.5em;
+  height: 11em;
   text-align: center;
   margin: 5px;
   border: 1px solid #fff;
@@ -86,16 +95,17 @@ right:  15px;
   background-color: #fff;
 
 }
-.card img{
+
+.card img {
   width: 70%;
   height: 50%;
   display: block;
-margin: 8px auto;
-border-radius: 3px;
+  margin: 8px auto;
+  border-radius: 3px;
 
 }
 
-.card .btn-success{
+.card .btn-success {
   padding: 4px;
   margin: 0;
   background-color: #00c64f;
@@ -103,40 +113,43 @@ border-radius: 3px;
 
 }
 
-.card .btn-danger{
+.card .btn-danger {
   padding: 4px;
   margin: 0;
   background-color: #ff0026;
   box-shadow: 0 0 3px 2px #ff0026;
 
 }
-.card .btn{
+
+.card .btn {
   padding: 3px;
   margin: 0 2px !important;
-width: 40%;
-border: none;
+  width: 40%;
+  border: none;
 }
-.pushOFF{
+
+.pushOFF {
   position: absolute;
   left: 10px;
   z-index: 555;
-  bottom:  7px;
+  bottom: 7px;
 
 }
 
-.pushON{
+.pushON {
   position: absolute;
   right: 10px;
   z-index: 555;
-  bottom:  7px;
+  bottom: 7px;
 
 
 }
 
-.choose-Push{
+.choose-Push {
   display: none;
 }
-.overlay{
+
+.overlay {
   /* transition: 2s; */
   position: absolute;
   top: 0;
@@ -147,45 +160,54 @@ border: none;
   border-radius: 5px;
   border-bottom: 2px solid green;
   z-index: 555;
-  
-}
-.bold{
-font-size: 22px;
-font-weight: 700;
-top: 25px;
-position: relative;
-z-index: 556;
+
 }
 
-.title-devices{
+.bold {
+  font-size: 22px;
+  font-weight: 700;
+  top: 15px;
+  position: relative;
+  z-index: 556;
+}
+
+.title-devices {
 
   border-bottom: 4px solid #fff;
   border-left: 4px solid #fff;
-box-shadow: 0 0 12px 1px #fff;
-border-radius: 5px;
+  box-shadow: 0 0 12px 1px #fff;
+  border-radius: 5px;
   width: fit-content;
   padding: 15px;
   margin: 15px auto;
 }
-.card .btn{
+
+.card .btn {
   padding: 3px;
   margin: 0 2px !important;
-width: 40%;
-border: none;
+  width: 40%;
+  border: none;
 }
-.nameOfDevice{
-  font-size: 22px;
-  font-weight: 600;
+
+.nameOfDevice {
+font-weight: 600;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 14px !important;
 }
-  label {
-    font-size: 15px;
-  }
+
+label {
+  font-size: 15px;
+}
+
 .form-check-input[type="checkbox"] {
   position: relative;
   top: -5px !important;
   font-size: 25px;
 }
-.toggle{
+
+.toggle {
   padding: 8px;
   width: 50% !important;
   margin: 0 auto !important;
@@ -193,27 +215,29 @@ border: none;
   border: none;
   font-weight: 600;
   transition: .5s;
-position: absolute;
-left: 40px;
-z-index: 8888;
+  position: absolute;
+  left: 40px;
+  z-index: 8888;
 }
 
 
-.push:focus,.push:active{
-scale:.8
+.push:focus,
+.push:active {
+  scale: .8
 }
 
 
 
 
 
-.currentState{
+.currentState {
   font-size: 22px;
   font-weight: 600;
   margin-top: 15px;
-  color: rgb(0, 55, 110);  
+  color: rgb(0, 55, 110);
   text-shadow: 0 0 3px rgb(149, 58, 253);
 }
+
 .contentDevices {
   position: fixed;
   left: 8%;
@@ -238,6 +262,7 @@ label {
   color: #fff;
   font-weight: 700;
 }
+
 input[type="text"] {
   display: block;
   width: 80%;
@@ -250,26 +275,29 @@ input[type="text"] {
   outline: 0;
 }
 
-.addDefferentDevice{
+.addDefferentDevice {
   position: relative;
-  top:20px;
+  top: 20px;
   left: 10px;
   font-size: 15px !important;
   width: 120px !important;
 }
-.selectImage{
+
+.selectImage {
   position: relative;
   top: 18px;
 }
 
 .typesAllDevices {
-flex-wrap: wrap;
-display: flex;
+  flex-wrap: wrap;
+  display: flex;
 }
-.typesAllDevices .form-check{
+
+.typesAllDevices .form-check {
   width: 40%;
 }
-.typesAllDevices label{
+
+.typesAllDevices label {
   font-size: 12px !important;
 }
 
@@ -284,16 +312,18 @@ display: flex;
 
 
 .fa-trash-can {
-transition: .7s;
+  transition: .7s;
 
 }
-.fa-trash-can:hover ,.model-btn-delete:hover{
+
+.fa-trash-can:hover,
+.model-btn-delete:hover {
   scale: 0.9;
 
 }
 
 
-.fa-trash-can{
+.fa-trash-can {
   border: none;
   background: #fff;
   color: #123;
@@ -313,12 +343,12 @@ transition: .7s;
 
 
 
-#containerImage{
+#containerImage {
 
   transform: scale(0);
   background-color: #fff;
 
-transition: .7s;
+  transition: .7s;
   border-radius: 10px;
   position: fixed;
   top: 0%;
@@ -328,7 +358,8 @@ transition: .7s;
   z-index: 100000000 !important;
   overflow-y: auto;
 }
-#closeImages{
+
+#closeImages {
   background-color: #000;
   color: #fff;
   font-size: 18px;
@@ -343,32 +374,36 @@ transition: .7s;
   cursor: pointer;
   border-radius: 4px;
 }
-#containerImage h2{
+
+#containerImage h2 {
   color: #123;
   text-align: center;
   margin: 25px 0;
   font-size: 35px;
   font-weight: 700;
 }
-.containerSelectionImages{
+
+.containerSelectionImages {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.cardImage{
+.cardImage {
   width: 14%;
 
   cursor: pointer;
   margin: 10px;
 
 }
-.cardImage img{
+
+.cardImage img {
   width: 100%;
   border-radius: 5px;
   height: 150px;
 }
-.cardImage span{
+
+.cardImage span {
   display: block;
   margin: 10px auto;
   font-size: 1px;
@@ -381,10 +416,189 @@ transition: .7s;
 /* media */
 
 
+.devicesPushRemote .card {
+  width: 25%;
+  position: relative;
+  height: 25em;
+  margin: 15px auto;
+}
+.fa-power-off{
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 7px;
+  border-radius: 50%;
+
+position: absolute;
+  bottom: 9px;
+  right: 38%;
+  z-index: 88888;
+
+
+}
+.fa-power-off.pushOFF{
+
+  left: 15%;
+  bottom: 5px;
+  right: 60%;
+}
+.fa-power-off.pushON{
+
+  right: 15%;
+  bottom: 5px;
+  left: 60%;
+}
+
+.devicesPushRemote .card .fa-power-off{
+
+  top: 15px;
+  right: 12px;
+  bottom: 86%;
+
+
+}
+
+.devicesPushRemote .card img {
+
+  width: 160px;
+
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+.devicesPushRemote .card .fa-caret-up {
+  position: absolute;
+  left: 37%;
+  font-size: 45px;
+  padding: 2px 5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+
+}
+
+.devicesPushRemote .card .fa-caret-down {
+  position: absolute;
+  bottom: 30%;
+  left: 37%;
+  font-size: 45px;
+  padding: 2px 5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+
+}
+
+.devicesPushRemote .card .fa-caret-left {
+  position: absolute;
+  top: 45%;
+  left: 22%;
+  font-size: 45px;
+  padding: 2px 5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+
+}
+
+.devicesPushRemote .card .fa-caret-right {
+  position: absolute;
+  top: 45%;
+  right: 34%;
+  font-size: 45px;
+  padding: 2px 5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+
+}
+
+.devicesPushRemote .card .fa-circle-play{
+  position: absolute;
+  top: 46%;
+  right: 48%;
+  font-size: 35px;
+  padding: 2px 5px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+
+}
 
 
 
-@media  (max-width: 1000px) {
+.devicesPushRemote .card .fa-volume-xmark {
+  position: absolute;
+  bottom: 15px;
+  right: 12px;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 7px;
+  border-radius: 50%;
+
+}
+
+.devicesPushRemote .card .fa-volume-low{
+  position: absolute;
+  bottom: 15px;
+  left: 12px;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 12px;
+  border-radius: 50%;
+
+}
+
+.devicesPushRemote .card .fa-volume-high{
+  position: absolute;
+  bottom: 15px;
+  left: 70px;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 12px 10px;
+  border-radius: 50%;
+
+}
+
+.devicesPushRemote .card .fa-rotate-left{
+  position: absolute;
+  top: 65%;
+  right: 20%;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 7px 10px;
+  border-radius: 4px;
+
+}
+
+.devicesPushRemote .card .fa-right-left{
+  position: absolute;
+  top: 65%;
+  left: 10%;
+  font-size: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ff0026;
+  background-color: rgb(12, 15, 19);
+  padding: 7px 10px;
+  border-radius: 4px;
+
+}
+@media (max-width: 1000px) {
 
 
 
@@ -393,73 +607,88 @@ transition: .7s;
   }
 
   .description {
-display: none;
+    display: none;
   }
+
   .lotifile .lotee {
     width: 170%;
     transform: translateY(3px);
     transform: translateX(-25px);
     margin-bottom: 25px;
   }
-.recoordingDevice{
-  text-align: center !important;
 
-  width: 200%;
-}
+  .recoordingDevice {
+    text-align: center !important;
+
+    width: 200%;
+  }
+
   .addDevice {
     position: fixed;
     left: 85%;
     bottom: 25% !important;
     z-index: 999999;
-  
-  }
-  .title-devices{
-font-size: 22px;
-    padding: 12px;
-    margin: 10px auto;
-  
+
   }
 
-  .devices .card ,.devicesPush .card,.devicesPushDoor .card{
+  .title-devices {
+    font-size: 22px;
+    padding: 12px;
+    margin: 10px auto;
+
+  }
+
+  .devices .card,
+  .devicesPush .card,
+  .devicesPushDoor .card,
+  .devicesPushRemote .card {
     width: 46%;
     position: relative;
 
-    height: 11em;
+    height: 10.5em;
     overflow: hidden;
   }
-  .devices .card p,.devicesPush .card p,.devicesPushDoor .card p{
+
+  .devices .card p,
+  .devicesPush .card p,
+  .devicesPushDoor .card p,
+  .devicesPushRemote .card p {
     font-size: 11px !important;
     position: absolute;
-top: 8px;
-right: 3px;
+    top: 8px;
+    right: 3px;
   }
-  .card img{
+
+  .card img {
     width: 90px;
     height: 60px !important;
   }
 
-  .toggle{
-  
+  .toggle {
+
     width: 50% !important;
 
-  position: absolute;
-  left: 45px;
-  bottom: 20px;
+    position: absolute;
+    left: 45px;
+    bottom: 20px;
   }
-.form-select{
-  font-size: 10px;
-}
 
-.addDeviceforRoom{
-  display: flex;
-  flex-direction: column;
-}
-.addNewDevice{
-  font-size: 12px;
-}
+  .form-select {
+    font-size: 10px;
+  }
+
+  .addDeviceforRoom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addNewDevice {
+    font-size: 12px;
+  }
+
   .contentDevices {
     position: fixed;
-  
+
     top: 20%;
     width: 95%;
     flex-direction: column;
@@ -469,36 +698,40 @@ right: 3px;
   label {
     font-size: 15px;
   }
+
   .form-check-input[type="checkbox"] {
-  
+
     top: -5px !important;
     left: -10px !important;
-  
-}
 
-
-.selectImage{
-
-  font-size: 12px;
-  top: 33px;
-  width: 70px;
-
-}
-.typeText{
-  font-size: 12px !important;
-  position: relative;
-  top: 15px;
-  width: 60px !important;
-
-}
-.fa-trash-can {
-  transition: .7s;
-  font-size: 15px !important;
-  padding: 3px !important;
-  border-radius: 1px !important;
   }
-  .card .btn{
-width: 38% !important;
+
+
+  .selectImage {
+
+    font-size: 12px;
+    top: 33px;
+    width: 70px;
+
+  }
+
+  .typeText {
+    font-size: 12px !important;
+    position: relative;
+    top: 15px;
+    width: 60px !important;
+
+  }
+
+  .fa-trash-can {
+    transition: .7s;
+    font-size: 15px !important;
+    padding: 3px !important;
+    border-radius: 1px !important;
+  }
+
+  .card .btn {
+    width: 38% !important;
     font-size: 12px !important;
     padding: 5px !important;
   }
@@ -507,98 +740,171 @@ width: 38% !important;
 
   /* ******************* */
 
+
+  .contentDevices {
+
+    width: 85%;
+
+  }
+
+
+
+  label {
+    margin-left: 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  input[type="text"] {
+
+    font-size: 15px;
+
+  }
+
+  .loteemobile {
+    display: none !important;
+  }
+
+
+  .typesAllDevices {
+    flex-wrap: wrap;
+    display: flex;
+    height: 100px;
+    overflow-y: auto;
+  }
+
+  .textLable .form-label {
+    font-size: 13px;
+  }
+
+  .addDefferentDevice {
+    position: relative;
+    top: 22px;
+    left: 5px;
+    font-size: 12px !important;
+
+
+
+
+  }
+
+
+
+  .typesAllDevices .form-check {
+    width: 100%;
+
+
+  }
+
+  .typesAllDevices label {
+    font-size: 10px !important;
+  }
+
+  .typesAllDevices .form-check-input[type="radio"] {
+    position: static;
+
+    font-size: 15px;
+  }
+
+
+  #closeImages {
+
+    font-size: 15px;
+
+    margin-left: 88%;
+
+  }
+
+  #containerImage h2 {
+
+    font-size: 25px;
+
+  }
+
+
+  .cardImage {
+    width: 14%;
+
+
+
+  }
+
+  .cardImage img {
+
+    height: 70px;
+  }
+  .fa-power-off.pushOFF{
+    right: 65%;
+
+  }
+  .fa-power-off.pushON{
   
-.contentDevices {
 
-  width: 85%;
-
-}
+    left: 65%;
 
 
-
-label {
-  margin-left: 20px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 14px;
-  width: 100%;
-}
-input[type="text"] {
-
-  font-size: 15px;
-
-}
-
-.loteemobile{
-  display: none !important;
-}
+  }
 
 
-.typesAllDevices {
-  flex-wrap: wrap;
-  display: flex;
-  height: 100px;
-  overflow-y: auto;
-}
-.textLable .form-label{
-  font-size: 13px;
-}
-.addDefferentDevice{
-  position: relative;
-  top: 22px;
-  left: 5px;
-font-size: 12px !important;
-
-
-
-
-}
-
-
-
-.typesAllDevices .form-check{
-  width: 100%;
-
-
-}
-.typesAllDevices label{
-  font-size: 10px !important;
-}
-
-.typesAllDevices .form-check-input[type="radio"] {
-  position: static;
-
-  font-size: 15px;
-}
-
-
-#closeImages{
-
-  font-size: 15px;
-
-  margin-left: 88%;
-
-}
-#containerImage h2{
-
-  font-size: 25px;
-
-}
-
-
-.cardImage{
-  width: 14%;
+  .devicesPushRemote .card {
+    width: 65%;
+  height: 24em;
   
+  }
+  
+  .devicesPushRemote .card .fa-power-off {
 
+    font-size: 20px;
+    padding: 9px 8px ;
+
+  }
+  
+  .devicesPushRemote .card img {
+  
+    width: 160px;
+  height: 100px !important;
+    margin-top: 20px;
+    margin-left: 30px;
+  }
+  
+  .devicesPushRemote .card .fa-caret-up {
+
+    left: 39%;
+
+  
+  }
+  
+  .devicesPushRemote .card .fa-caret-down {
+
+    bottom: 32%;
+    left: 39%;
+
+  
+  }
+  
+  .devicesPushRemote .card .fa-caret-left {
+
+    top: 45%;
+left: 25%;
+
+  
+  }
+  
+  .devicesPushRemote .card .fa-caret-right {
+
+    top: 45%;
+    right: 35.5%;
+
+  
+  }
+  
+  .devicesPushRemote .card .fa-volume-xmark {
+
+    font-size: 18px;
+
+  
+  }
 
 }
-.cardImage img{
-
-  height: 70px;
-}
-
-}
-
-
-
-
